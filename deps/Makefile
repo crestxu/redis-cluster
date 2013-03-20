@@ -11,6 +11,7 @@ ENDCOLOR="\033[0m"
 
 default:
 	@echo "Explicit target required"
+CURPATH=`pwd`
 
 .PHONY: default
 
@@ -52,8 +53,7 @@ hiredis: .make-prerequisites
 
 zookeeper: .make-prerequisites
 	@printf '%b %b\n' $(MAKECOLOR)MAKE$(ENDCOLOR) $(BINCOLOR)$@$(ENDCOLOR)
-	cd zookeeper && $(MAKE)
-
+	cd zookeeper && ./configure --prefix=$(CURPATH)/zookeeper  && $(MAKE) && $(MAKE) install
 .PHONY: zookeeper
 
 
