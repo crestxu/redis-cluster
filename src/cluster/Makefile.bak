@@ -1,0 +1,3 @@
+all:
+	gcc test.c -o test_zoo -I../deps/zookeeper/include ../deps/zookeeper/lib/libzookeeper_mt.la
+ 

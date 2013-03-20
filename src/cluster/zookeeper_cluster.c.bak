@@ -68,7 +68,8 @@ void watcher2(zhandle_t *zh, int type, int state, const char *path, void* contex
     }
     struct String_vector str_vec ;
     int rc = zoo_wget_children(zh, path, watcher2, 0, &str_vec);
-    if(type == 4){
+    if(type == 4){//zookeeper集群的变化也会引起watcher2函数的执行，而且我们要监听的是被管理集群的变化
+        //zookeeper集群的变化type为-1，被监听集群的节点发生变化，type为-1
         deal_strvec(&str_vec);
     }else if(type == -1){
     }
